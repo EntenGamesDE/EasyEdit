@@ -69,6 +69,6 @@ class PacketUtils
 	 */
 	public static function resendBlock(Vector3 $vector, World $world, Player $player): void
 	{
-		Server::getInstance()->broadcastPackets([$player], $world->createBlockUpdatePackets([$vector]));
+		Server::getInstance()->broadcastPackets([$player], $world->createBlockUpdatePackets($player->getNetworkSession()->getProtocolId(), [$vector]));
 	}
 }
